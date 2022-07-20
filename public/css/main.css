@@ -1,0 +1,354 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --main-red: rgb(232, 18, 36);
+    --main-green: rgb(4, 133, 26);
+    --main-beige: #FBF8F6
+}
+
+body{
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    background: var(--main-beige);
+    width: 100vw;
+    overflow-y: overlay
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 40px 5px rgba(0, 0, 0, .03);
+    justify-content: space-around
+}
+
+.logo{
+    color: black;
+    text-decoration: none;
+}
+
+.search-bar{
+    box-shadow: 2px 2px 16px 5px rgba(0, 0, 0, .03);
+    border: 1px solid rgba(0, 0, 0, .7);
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    transition: .2s ease;
+}
+
+.search-bar:hover{
+    box-shadow: 2px 2px 16px 5px rgba(0, 0, 0, .1);
+}
+
+.search-bar-input{
+    width: 90%;
+    border: none;
+    outline: none;
+}
+
+.search-icon-container{
+    background: var(--main-red);
+    width: 30px;
+    height: 30px;
+    display: grid;
+    color: white;
+    border-radius: 50%;
+    place-items: center;
+}
+
+.gg-search{
+    transform: scale(.7) !important;
+}
+
+.links-container{
+    display: flex;
+    gap: 20px;
+}
+
+.links-container a{
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.links-container a:hover{
+    background: rgba(0, 0, 0, .08)
+}
+
+.featured-link{
+    background: var(--main-red);
+    color: white !important;
+    box-shadow: 2px 2px 5px 5px rgba(232, 18, 36, .02);
+}
+
+.featured-link:hover{
+    background: var(--main-red) !important;
+}
+
+/* Organizations card */
+.organizations-cards{
+    padding: 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.organization-card{
+    transition: .2s ease;
+    background: var(--main-beige);
+    cursor: pointer;
+}
+
+.organization-card:hover{
+    transform: scale(1.1);
+}
+
+.organization-image{
+    width: 100%;
+    border-radius: 10px;
+    height: 214px;
+    background-size: cover;
+    background-position: center;
+}
+
+.organization-title{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.organization-desc{
+    font-size: .9rem;
+    color: rgb(151, 151, 151);
+}
+
+.btn{
+    padding: 10px 20px;
+    background: var(--main-green);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Org single-page */
+.org-page{
+    display: flex;
+    height: 70vh;
+    width: 80vw;
+    align-self: center;
+    position: relative;
+    gap: 40px;
+    border-radius: 20px;
+}
+
+.org-page-info{
+    width: 30%;
+}
+
+.org-page-image{
+    height: 100%;
+    width: 70%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.org-single{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.org-page-info h1{
+    font-size: 3rem;
+    line-height: 45px;
+    margin: 0;
+    color: var(--main-red)
+}
+
+.org-page-info p{
+    font-size: .9rem;
+    line-height: 25px;
+    text-align: justify;
+    padding-bottom: 20px;
+}
+
+.org-info{
+    padding: 20px 10vw
+}
+.org-info h1{
+    color: var(--main-red);
+}
+.org-info p{
+    text-align: justify;
+    line-height: 30px;
+}
+
+/* Globals */
+.btn-donate{
+    width: 100%;
+    border: 2px solid var(--main-red);
+    color: var(--main-red);
+    font-weight: 700;
+    padding: 10px 0;
+    border-radius: 40px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: .2s ease;
+}
+.btn-donate:hover{
+    color: white;
+    background: var(--main-red)
+}
+
+.logo-in-text{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: black
+}
+
+a{
+    color: var(--main-red)
+}
+
+.creator-credits{
+    margin-top: 50px;
+}
+
+/* About page */
+.about-section{
+    padding: 40px 10vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-section h1{
+    text-align: center;
+    color: var(--main-red);
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+.about-section p{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Mobile */
+
+@media (min-width:120px) and (max-width: 1010px)  { 
+    .links-container, .search-bar-container, .vignette{
+        display: none;
+    }
+
+    .organizations-cards{
+        grid-template-columns: 4fr;
+        padding: 20px 40px;
+    }
+
+    .org-page{
+        align-self: center;
+        position: relative;
+        gap: 40px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 10vw;
+    }
+    
+    .org-page-info{
+        width: 100%;
+    }
+    
+    .org-page-image{
+        height: 32vh;
+        width: auto;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+    }
+    
+    .org-single{
+        width: 100vw;
+        justify-content: center;
+        padding: 50px 0;
+        display: inherit;
+    }
+}
+
+@media (min-width:641px)  {
+    .organizations-cards{
+        grid-template-columns: 2fr 2fr;
+    }
+
+}
+@media (min-width:961px)  { 
+    .links-container, .search-bar-container{
+        display: none;
+    }
+    .organizations-cards{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width:1010px) {
+    .links-container, .search-bar-container{
+        display: flex;
+    }
+    .organizations-cards{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .mobile-menu{
+        display: none;
+    }
+}
+
+.close-menu-icon-container{
+    display: none;
+    color: white;
+}
+
+.mobile-menu-class{
+    display: flex !important;
+    z-index: 999;
+    left: 0;
+
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    position: fixed !important;
+}
+.mobile-menu-class a{
+    color: white !important;
+}
+
+.vignette{
+    background: linear-gradient(to bottom, #000000, transparent);
+    position: fixed;
+    top: 0;
+    height: 50%;
+    width: 100%;
+    opacity: 0.75;
+    z-index: 998;
+    display: none;
+}

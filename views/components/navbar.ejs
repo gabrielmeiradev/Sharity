@@ -1,0 +1,72 @@
+<nav>
+    <div class="vignette"></div>
+    <div class="logo-container">
+        <a href="/" class="logo"><h1>❤️ sharity</h1></a>
+    </div>
+    <div class="search-bar-container">
+        <form class="search-bar" method="get" action="http://localhost:4040/organization/search">
+            <input type="text" class="search-bar-input" name="q" placeholder="Procure por uma organização"
+                spellcheck="false" autocomplete="off" />
+
+            <div onClick="submitHandle()" class="search-icon-container">
+                <i class="gg-search"></i>
+            </div>
+        </form>
+    </div>
+    <div class="links-container">
+        <a href="/about">Sobre</a>
+        <a href="/sign" class="featured-link"><i class="gg-user"></i> Registre-se</a>
+    </div>
+    <div class="mobile-menu" onclick="openMenu()">
+        <i class="gg-menu-right-alt"></i>
+    </div>
+    <div class="close-menu-icon-container" onclick="closeMenu()">
+        <i class="gg-close"></i>
+    </div>
+</nav>
+<script>
+    const searchForm = document.querySelector(".search-bar");
+    const searchBarInput = document.querySelector(".search-bar-input");
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitHandle();
+    })
+
+    function submitHandle() {
+
+        if (searchBarInput.value.length <= 0 || searchBarInput.value == null) {
+            return false
+        } else {
+            searchForm.submit();
+        }
+    }
+    const linksContainer = document.querySelector(".links-container");
+    const searchBar = document.querySelector(".search-bar");
+    const searchBarContainer = document.querySelector(".search-bar-container");
+    const closeIcon = document.querySelector(".close-menu-icon-container");
+    const vignette = document.querySelector(".vignette");
+
+    function openMenu(){
+
+        closeIcon.classList.add('mobile-menu-class');
+        closeIcon.style.top = "170px";
+        
+        linksContainer.classList.add('mobile-menu-class');
+        linksContainer.style.top = "100px";
+        
+        searchBarContainer.classList.add('mobile-menu-class');
+        searchBarContainer.style.top = "30px";
+        
+        vignette.style.display = "inherit";
+    }
+
+    function closeMenu(){
+        closeIcon.classList.remove('mobile-menu-class');
+        
+        linksContainer.classList.remove('mobile-menu-class');
+
+        searchBarContainer.classList.remove('mobile-menu-class');
+
+        vignette.style.display = "none";
+    }
+</script>
