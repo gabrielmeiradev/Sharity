@@ -2,13 +2,37 @@ const express = require("express");
 const { randomUUID } = require("crypto");
 const app = express();
 var path = require('path')
+const expressLayouts = require('express-ejs-layouts');
 
+
+// Database
+const connectToDb = require('./db.js')
+connectToDb();
+const Org = require('./models/org.js')
+
+
+// Settings
+app.use(expressLayouts);
+app.set('layout', './layouts/main')
 app.set('view engine', 'ejs')
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'))
+app.use(express.urlencoded());
+
+const multer  = require('multer')
+
 
 const __PORT = 4040;
 
-  
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, path.extname(file.originalname))
+    }
+  })  
+let upload = multer({ storage: storage });
+
 let orgs = [
     {
         id: 1,
@@ -63,25 +87,37 @@ let orgs = [
 
 
 app.get("/", (req, res) =>{
-    res.render('../views/home', { orgs })
+    res.render('partials/home', { orgs })
 })
 
 app.get("/organization/search", (req, res) => {
     const term = req.query;
-    res.render('../views/search', { orgs, term });
+    res.render('partials/search', { orgs, term });
 })
 
 app.get("/organization/:id", (req, res) => {
     const id = req.params.id;
-    res.render('../views/organization', { orgs, id });
+    res.render('partials/organization', { orgs, id });
 })
 
 app.get("/sign", (req, res) => {
-    res.send('Rota de inscrição')
+    res.render('partials/sign')
+})
+
+app.post("/register", upload.single('orgImage'), async (req, res) => {
+    const org = req.body;
+
+    const orgName = org.name;
+    const orgDesc = org.description;
+    const orgMission = org.mission;
+    const orgImage = org.image;
+
+    Org.create({name: orgName, featuredImage: orgImage, description: orgDesc, mission: orgMission})
+    res.redirect('/')
 })
 
 app.get("/about", (req, res) => {
-    res.render('../views/about')
+    res.render('partials/about')
 })
 
 app.listen(__PORT, () => {

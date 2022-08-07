@@ -1,6 +1,13 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/sharity', { useMongoClient: true })
-mongoose.Promise = global.Promise;
+const connectToDb = () => {
+  mongoose
+    .connect('mongodb+srv://root:root@cluster0.mo6ep.mongodb.net/?retryWrites=true&w=majority', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => console.log("MongoDB Atlas Conectado!"))
+    .catch((err) => console.error(err));
+};
 
-module.exports = mongoose;
+module.exports = connectToDb;

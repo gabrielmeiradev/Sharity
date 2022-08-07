@@ -14,12 +14,8 @@
 </head>
 
 <body>
-    <%- include('components/navbar.ejs') %>
-    <div class="organizations-cards">
-        <% orgs.forEach(org => { %>
-           <%- include('./components/organization-card.ejs', { org }) %>
-        <% }) %>
-    </div>
+    <%- include('../components/navbar.ejs') %>
+    <%- body %>
 </body>
 
 </html>

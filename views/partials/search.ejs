@@ -1,0 +1,26 @@
+<% let results = orgs.filter(
+    org => 
+    org
+        .name
+        .toLowerCase()
+        .search(term.q) >= 0
+); 
+%>
+<div class="organizations-cards">
+
+    <% 
+        results.forEach(org => {
+    %>
+    <%- include('../components/organization-card.ejs', { org }) %>
+        
+    <% 
+        }
+    ) 
+    %>
+
+    <% if(results.length <= 0) { %>
+        <a href="/" style="display: flex; align-items: center"><i class="gg-arrow-left"></i> Voltar</a>
+        <p>Nenhum resultado encontrado.</p>
+    <% } %>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="form-container">
+    <form class="form" method="post" action="/register" enctype="multipart/form-data">
+        <label for="name">Nome da organização: </label>
+        <input type="text" name="name" required />
+
+        <label for="mission">Missão da organização: </label>
+        <textarea rows=10 name="mission" required></textarea>
+
+        <label for="description">Descrição da organização: </label>
+        <textarea rows=20 name="description"></textarea>
+
+        <label for="image">Image da organização: </label>
+        <input type="file" name="image">
+
+        <button type="submit" class="send"><i class="gg-check"></i> Enviar</button>
+    </form>
+</div>

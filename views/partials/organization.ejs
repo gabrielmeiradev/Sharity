@@ -1,0 +1,18 @@
+<%
+    let org = orgs.find(org => org.id == id);
+%>
+
+<div class="org-single">
+    <div class="org-page">
+        <div class="org-page-image" style="background-image: url('<%= org.image %>');"></div>
+        <div class="org-page-info">
+            <h1><%= org.name %></h1>
+            <p><%= org.mission %></p>
+            <a class="btn-donate">Fazer doação</a>
+        </div>
+    </div>
+    <div class="org-info">
+        <h1>Descrição: </h1>
+        <p><%- org.desc.replace('<br />', '<br /><br />') %></p>
+    </div>
+</div>
