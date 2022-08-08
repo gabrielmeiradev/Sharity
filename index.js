@@ -18,20 +18,22 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded());
 
-const multer  = require('multer')
+const multer  = require('multer');
 
-
-const __PORT = 4040;
-
-let storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
-      cb(null, path.extname(file.originalname))
+      cb(null, Date.now() + '.jpg') //Appending .jpg
     }
-  })  
-let upload = multer({ storage: storage });
+  })
+
+const upload = multer({ storage: storage });
+
+
+const __PORT = 4040;
+
 
 let orgs = [
     {
@@ -101,18 +103,13 @@ app.get("/organization/:id", (req, res) => {
 })
 
 app.get("/sign", (req, res) => {
-    res.render('partials/sign')
+    let imageId = randomUUID()
+    res.render('partials/sign', { imageId })
 })
 
-app.post("/register", upload.single('orgImage'), async (req, res) => {
-    const org = req.body;
-
-    const orgName = org.name;
-    const orgDesc = org.description;
-    const orgMission = org.mission;
-    const orgImage = org.image;
-
-    Org.create({name: orgName, featuredImage: orgImage, description: orgDesc, mission: orgMission})
+app.post("/register", upload.single('image'), async (req, res) => {
+    Org.create(req.body)
+    
     res.redirect('/')
 })
 

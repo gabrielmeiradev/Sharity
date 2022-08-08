@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 
 const OrgSchema = new mongoose.Schema({
+    imageId: {
+        type: String,
+        require: true
+    },
     name: {
         type: String,
         require: true
     },
     featuredImage: {
         type: String,
-        require: true
+        require: false
     },
     description: {
         type: String,

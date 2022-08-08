@@ -1,5 +1,7 @@
 <div class="form-container">
     <form class="form" method="post" action="/register" enctype="multipart/form-data">
+        <input type="hidden" name="imageId" value="<%= imageId %>"> 
+
         <label for="name">Nome da organização: </label>
         <input type="text" name="name" required />
 
